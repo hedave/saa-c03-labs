@@ -1,0 +1,21 @@
+---
+description: No NAT, no Control Tower; NEVER list requires ALLOW_PAID=true from the human
+alwaysApply: true
+---
+
+# No NAT. No Control Tower.
+
+Do not draft or apply NAT Gateways or AWS Control Tower. Do not join AWS Organizations.
+
+NEVER without the human typing `ALLOW_PAID=true`:
+
+- NAT Gateway
+- Multi-AZ RDS left running
+- ALB or NLB left running
+- EKS
+- Organizations or Control Tower (joining can auto-upgrade the Free plan and void credits)
+- upgrading to Paid just for Security Hub
+- overnight `terraform apply`
+- long-lived AWS access keys for agents
+
+Agents do not set `ALLOW_PAID=true`. Region is `us-east-1` only. Tags on anything created: `Project=saa-c03`, `AutoDestroy=true`.
