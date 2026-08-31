@@ -1,0 +1,18 @@
+---
+description: Terraform plan only; no apply, destroy, or AWS creates unless the human types ALLOW_APPLY=true
+alwaysApply: true
+---
+
+# Plan only
+
+Cloud Agents may draft Terraform or CDK and run `terraform plan`.
+
+Cloud Agents may not:
+
+- run `terraform apply`
+- run `terraform destroy`
+- create AWS resources (console, CLI, SDK, CDK deploy, or any other API)
+
+unless the human types `ALLOW_APPLY=true` in this session.
+
+Do not apply anything to AWS. Do not invent `ALLOW_APPLY=true`. If a prompt asks to apply, destroy, or provision and the human has not typed `ALLOW_APPLY=true`, stop and report.
